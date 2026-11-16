@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Centerville Web Co. | Websites for local businesses</title>
+<meta name="description" content="Centerville Web Co. builds mobile-friendly websites for small businesses in Centerville, Bellbrook, Kettering and the Dayton area. Free sample before you pay.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#102A43; --ink-soft:#52647A; --line:#E3E8EE; --paper:#FFFFFF; --mist:#F3F6F9;
+    --green:#0E7C66; --green-dark:#0A5F4E; --green-tint:#E3F3EF;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  body{font-family:"Schibsted Grotesk",system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--ink);background:var(--paper);font-size:17px;line-height:1.6}
+  a{color:inherit}
+  .wrap{max-width:1060px;margin:0 auto;padding:0 24px}
+  :focus-visible{outline:3px solid var(--green);outline-offset:3px;border-radius:4px}
+
+  header{border-bottom:1px solid var(--line)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:70px}
+  .logo{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:800;font-size:1.15rem;letter-spacing:-.01em}
+  .logo svg{flex:none}
+  .nav-links{display:flex;gap:28px;align-items:center;font-weight:500;font-size:.95rem}
+  .nav-links a{text-decoration:none;color:var(--ink-soft)}
+  .nav-links a:hover{color:var(--ink)}
+  .btn{display:inline-block;background:var(--green);color:#fff !important;text-decoration:none;font:inherit;font-weight:600;border:none;border-radius:8px;padding:13px 22px;cursor:pointer}
+  .btn:hover{background:var(--green-dark)}
+  .btn.light{background:transparent;color:var(--ink) !important;box-shadow:inset 0 0 0 1.5px var(--line)}
+  .btn.light:hover{box-shadow:inset 0 0 0 1.5px var(--ink)}
+
+  /* Hero */
+  .hero{padding:84px 0 72px}
+  .hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:center}
+  .hero h1{font-size:clamp(2.6rem,6vw,4.4rem);line-height:1.02;letter-spacing:-.035em;font-weight:800;margin-bottom:22px}
+  .hero p{font-size:1.18rem;color:var(--ink-soft);max-width:44ch;margin-bottom:30px}
+  .actions{display:flex;gap:12px;flex-wrap:wrap}
+  .places{margin-top:34px;font-size:.92rem;color:var(--ink-soft)}
+
+  /* Phone mockup */
+  .phone{width:270px;margin:0 auto;border-radius:38px;background:var(--ink);padding:12px;box-shadow:0 30px 60px -20px rgba(16,42,67,.35)}
+  .screen{border-radius:28px;overflow:hidden;background:#fff;height:500px;display:flex;flex-direction:column}
+  .scr-top{background:var(--green-tint);padding:26px 18px 22px}
+  .scr-top .notch{width:70px;height:6px;border-radius:6px;background:var(--ink);opacity:.15;margin:0 auto 20px}
+  .scr-top b{display:block;font-size:1.25rem;letter-spacing:-.02em;line-height:1.1;margin-bottom:6px}
+  .scr-top span{font-size:.75rem;color:var(--ink-soft)}
+  .scr-btns{display:flex;gap:8px;margin-top:14px}
+  .scr-btns i{font-style:normal;font-size:.7rem;font-weight:700;padding:7px 12px;border-radius:6px;background:var(--green);color:#fff}
+  .scr-btns i+i{background:#fff;color:var(--ink)}
+  .scr-body{padding:16px 18px;display:flex;flex-direction:column;gap:10px}
+  .bar{height:9px;border-radius:5px;background:var(--mist)}
+  .tiles{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:6px 0}
+  .tiles div{aspect-ratio:1;border-radius:10px;background:var(--mist)}
+  .stars{font-size:.8rem;color:#E0A21B;letter-spacing:2px}
+  .map{height:70px;border-radius:10px;background:linear-gradient(135deg,#E8EEF3 25%,transparent 25%) 0 0/14px 14px,#F3F6F9;position:relative}
+  .map::after{content:"";position:absolute;left:50%;top:40%;width:14px;height:14px;border-radius:50% 50% 50% 0;background:var(--green);transform:translate(-50%,-50%) rotate(-45deg)}
+
+  section{padding:88px 0}
+  .alt{background:var(--mist)}
+  h2{font-size:clamp(1.9rem,4vw,2.6rem);letter-spacing:-.03em;line-height:1.1;font-weight:800;margin-bottom:12px}
+  .intro{color:var(--ink-soft);max-width:54ch;margin-bottom:44px}
+
+  /* Steps */
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;list-style:none;counter-reset:s}
+  .steps li{counter-increment:s;border-top:2px solid var(--ink);padding-top:18px}
+  .steps li::before{content:counter(s);display:block;font-weight:800;font-size:2.4rem;line-height:1;color:var(--green);margin-bottom:14px}
+  .steps h3{font-size:1.15rem;margin-bottom:6px}
+  .steps p{color:var(--ink-soft);font-size:.98rem}
+
+  /* Pricing rows */
+  .prices{border-top:1px solid #CFD8E1}
+  .price-row{display:grid;grid-template-columns:260px 1fr 140px;gap:28px;padding:28px 0;border-bottom:1px solid #CFD8E1;align-items:baseline}
+  .price-row h3{font-size:1.25rem;letter-spacing:-.01em}
+  .price-row p{color:var(--ink-soft);font-size:.98rem}
+  .price-row .amt{font-weight:800;font-size:1.35rem;white-space:nowrap;text-align:right}
+  .amt small{display:block;font-weight:500;font-size:.8rem;color:var(--ink-soft)}
+  .price-row.featured h3::after{content:"Most popular";margin-left:10px;font-size:.72rem;font-weight:700;color:var(--green);background:var(--green-tint);padding:3px 8px;border-radius:5px;vertical-align:middle}
+  .free-note{margin-top:28px;font-weight:600}
+
+  /* Who */
+  .who-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px}
+  .tags{display:flex;flex-wrap:wrap;gap:8px}
+  .tags span{border:1.5px solid var(--line);border-radius:999px;padding:7px 14px;font-size:.95rem}
+
+  /* FAQ */
+  .faq{max-width:760px}
+  details{border-bottom:1px solid var(--line);padding:20px 0}
+  summary{cursor:pointer;font-weight:600;font-size:1.05rem;list-style:none;display:flex;justify-content:space-between;gap:20px}
+  summary::-webkit-details-marker{display:none}
+  summary::after{content:"+";font-size:1.4rem;line-height:1;color:var(--green)}
+  details[open] summary::after{content:"–"}
+  details p{color:var(--ink-soft);margin-top:10px;max-width:62ch}
+
+  /* Contact */
+  .contact{background:var(--ink);color:#fff}
+  .contact h2{color:#fff}
+  .contact .intro{color:#B7C4D2}
+  .contact-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:start}
+  .email-big{display:inline-block;font-size:1.2rem;font-weight:700;color:#7FD8C3;text-decoration:none;border-bottom:2px solid #7FD8C3;word-break:break-all}
+  form{background:#fff;color:var(--ink);border-radius:14px;padding:30px}
+  label{display:block;font-weight:600;font-size:.9rem;margin:14px 0 6px}
+  label:first-child{margin-top:0}
+  input,select,textarea{width:100%;padding:12px 14px;border:1.5px solid var(--line);border-radius:8px;font:inherit;font-size:1rem;color:var(--ink);background:#fff}
+  input:focus,select:focus,textarea:focus{outline:none;border-color:var(--green)}
+  .row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  form .btn{width:100%;margin-top:20px;padding:15px}
+  .done{display:none;text-align:center;padding:20px 0}
+  .done h3{font-size:1.5rem;margin-bottom:8px}
+  .done p{color:var(--ink-soft)}
+
+  footer{padding:28px 0;font-size:.9rem;color:var(--ink-soft)}
+  footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+
+  @media (max-width:860px){
+    .nav-links a:not(.btn){display:none}
+    .nav-links .btn{padding:10px 14px;white-space:nowrap;font-size:.88rem}
+    .logo{font-size:1rem;white-space:nowrap}
+    .hero{padding:54px 0}
+    .hero-grid,.who-grid,.contact-grid{grid-template-columns:1fr}
+    .phone{width:230px}.screen{height:420px}
+    .steps{grid-template-columns:1fr;gap:30px}
+    .price-row{grid-template-columns:1fr auto;gap:6px 20px}
+    .price-row .amt{text-align:right}
+    .price-row p{grid-column:1 / -1;grid-row:2}
+    .row{grid-template-columns:1fr}
+    section{padding:64px 0}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="#top">
+      <svg width="28" height="28" viewBox="0 0 28 28" aria-hidden="true"><rect width="28" height="28" rx="7" fill="#0E7C66"/><path d="M8 9h12M8 14h12M8 19h7" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/></svg>
+      Centerville Web Co.
+    </a>
+    <nav class="nav-links">
+      <a href="#how">How it works</a>
+      <a href="#prices">Prices</a>
+      <a href="#faq">FAQ</a>
+      <a class="btn" href="#contact">Get a free sample</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <h1>Websites for local businesses.</h1>
+        <p>We build clean, mobile-friendly websites for shops, salons, restaurants and trades around Centerville. You see a free sample of your new site before you pay anything.</p>
+        <div class="actions">
+          <a class="btn" href="#contact">Get a free sample</a>
+          <a class="btn light" href="#prices">See prices</a>
+        </div>
+        <p class="places">Serving Centerville, Bellbrook, Kettering, Washington Township and Dayton</p>
+      </div>
+      <div aria-hidden="true">
+        <div class="phone"><div class="screen">
+          <div class="scr-top">
+            <div class="notch"></div>
+            <b>Your business,<br>on every phone.</b>
+            <span>Hours · Menu · Reviews · Directions</span>
+            <div class="scr-btns"><i>Call now</i><i>Order</i></div>
+          </div>
+          <div class="scr-body">
+            <div class="stars">★★★★★</div>
+            <div class="bar" style="width:90%"></div>
+            <div class="bar" style="width:70%"></div>
+            <div class="tiles"><div></div><div></div></div>
+            <div class="map"></div>
+          </div>
+        </div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="alt" id="how">
+    <div class="wrap">
+      <h2>How it works</h2>
+      <p class="intro">No meetings, no tech talk, and no payment until you're happy.</p>
+      <ol class="steps">
+        <li><h3>We make a free sample</h3><p>We build a preview of your new website using your menu, services and photos.</p></li>
+        <li><h3>You tell us what to change</h3><p>Colors, wording, photos. We adjust it until it feels right for your business.</p></li>
+        <li><h3>Your site goes live</h3><p>We put it online at your own web address and connect it to Google Maps.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="prices">
+    <div class="wrap">
+      <h2>Prices</h2>
+      <p class="intro">Clear prices, no surprises. Every project starts with a free sample.</p>
+      <div class="prices">
+        <div class="price-row featured">
+          <h3>New website</h3>
+          <p>Up to 5 pages, works on phones, contact or order form, map and hours. For businesses with no website yet.</p>
+          <div class="amt">from $500</div>
+        </div>
+        <div class="price-row">
+          <h3>Website refresh</h3>
+          <p>We redesign an old or outdated site so it looks current and is easy to use on a phone.</p>
+          <div class="amt">from $300</div>
+        </div>
+        <div class="price-row">
+          <h3>Google profile setup</h3>
+          <p>We set up or clean up your Google Maps listing: photos, hours, services and your website link.</p>
+          <div class="amt">$75</div>
+        </div>
+        <div class="price-row">
+          <h3>Monthly updates</h3>
+          <p>Send us changes anytime: new hours, prices, photos or specials. Hosting included.</p>
+          <div class="amt">$50<small>per month</small></div>
+        </div>
+      </div>
+      <p class="free-note">Not sure what you need? Ask for a free sample and we'll recommend the right option.</p>
+    </div>
+  </section>
+
+  <section class="alt">
+    <div class="wrap who-grid">
+      <div>
+        <h2>Who we work with</h2>
+        <p class="intro" style="margin-bottom:0">Small, local businesses with happy customers but little or no presence online. If people love you on Google but can't find your website, we can help.</p>
+      </div>
+      <div class="tags" style="align-content:center">
+        <span>Bakeries</span><span>Restaurants &amp; cafés</span><span>Salons &amp; barbers</span><span>Auto repair</span><span>Lawn care</span><span>Cleaning services</span><span>Tailors</span><span>Pet groomers</span><span>Contractors</span><span>Home businesses</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq">
+    <div class="wrap">
+      <h2>Questions</h2>
+      <div class="faq">
+        <details><summary>Is the sample really free?</summary><p>Yes. We build a preview of your site at no cost. If you don't like it, you don't pay anything.</p></details>
+        <details><summary>How long does it take?</summary><p>Most sites are ready within one to two weeks after you approve the sample.</p></details>
+        <details><summary>Do I need to know anything about computers?</summary><p>No. You send us your information and photos, and we handle the rest.</p></details>
+        <details><summary>Who owns the website?</summary><p>You do. Your web address is registered in your business's name.</p></details>
+        <details><summary>Can you update my site later?</summary><p>Yes. With monthly updates, just email us your changes. Without a plan, we can make one-time changes at a small fee.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <div class="wrap contact-grid">
+      <div>
+        <h2>Get your free sample</h2>
+        <p class="intro">Tell us about your business and we'll email you a preview of your new website.</p>
+        <a class="email-big" href="mailto:centervillewebco@gmail.com">centervillewebco@gmail.com</a>
+      </div>
+      <form id="sampleForm" name="sample-request" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/?sent=1#contact">
+        <input type="hidden" name="form-name" value="sample-request">
+        <p style="display:none"><label>Leave this empty <input name="bot-field"></label></p>
+        <div id="formFields">
+          <div class="row">
+            <div><label for="name">Your name</label><input id="name" name="Name" required autocomplete="name"></div>
+            <div><label for="biz">Business name</label><input id="biz" name="Business" required></div>
+          </div>
+          <label for="email">Email</label>
+          <input id="email" name="Email" type="email" required autocomplete="email">
+          <label for="need">What do you need?</label>
+          <select id="need" name="Need">
+            <option>New website</option><option>Website refresh</option><option>Google profile setup</option><option>Monthly updates</option><option>Not sure yet</option>
+          </select>
+          <label for="site">Current website or Google listing (if any)</label>
+          <input id="site" name="Current site" placeholder="Optional">
+          <label for="msg">Anything else?</label>
+          <textarea id="msg" name="Message" rows="3"></textarea>
+          <button class="btn" type="submit">Request my free sample</button>
+        </div>
+        <div class="done" id="done" aria-live="polite">
+          <h3>Request sent</h3>
+          <p>Thanks! We'll email you within a couple of days.</p>
+        </div>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Centerville Web Co. · Centerville, Ohio</span>
+    <a href="mailto:centervillewebco@gmail.com">centervillewebco@gmail.com</a>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var form = document.getElementById('sampleForm');
+  var fields = document.getElementById('formFields');
+  var done = document.getElementById('done');
+  function showDone(){ fields.style.display = 'none'; done.style.display = 'block'; }
+  if (location.search.indexOf('sent=1') !== -1) showDone();
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    if(!form.checkValidity()){ form.reportValidity(); return; }
+    var btn = form.querySelector('button');
+    btn.disabled = true; btn.textContent = 'Sending...';
+    fetch('/', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+      body: new URLSearchParams(new FormData(form)).toString()
+    }).then(function(r){
+      if(!r.ok) throw new Error();
+      showDone();
+    }).catch(function(){
+      btn.disabled = false; btn.textContent = 'Request my free sample';
+      var err = document.getElementById('formErr');
+      if(!err){ err = document.createElement('p'); err.id = 'formErr'; err.style.cssText = 'margin-top:12px;color:#B42318;font-weight:600'; fields.appendChild(err); }
+      err.textContent = "That didn't send. Please email us at centervillewebco@gmail.com instead.";
+    });
+  });
+})();
+</script>
+</body>
+</html>
