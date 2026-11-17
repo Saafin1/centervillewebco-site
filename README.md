@@ -15,6 +15,8 @@ A plain static site (HTML, CSS and a small JavaScript file). There is no framewo
 │   └── contact-form.js     Sends the "free sample" form to Netlify Forms and shows the confirmation
 ├── assets/
 │   └── favicon.svg         Browser tab icon
+├── demos/
+│   └── <client>/index.html Free sample sites shown to potential clients (not indexed by search engines)
 ├── netlify.toml            Hosting settings (publish folder, security and cache headers)
 ├── .github/workflows/
 │   └── checks.yml          Runs the code checks on every pull request
@@ -61,3 +63,11 @@ The form in `index.html` has `data-netlify="true"`, so Netlify collects submissi
 2. **Forms → Form notifications → Add notification → Email** to centervillewebco@gmail.com.
 
 A hidden "bot-field" input acts as a spam trap. Real visitors never see it.
+
+## Client demos
+
+Free sample sites live in `demos/<client-name>/index.html` and are served at
+`/demos/<client-name>/`. Each demo is a single self-contained file so it can also be
+emailed. Netlify sends a `noindex` header for everything under `/demos/`, and demos
+are never linked from the main site. Remove a demo once the client's real site is live
+or they decline.
