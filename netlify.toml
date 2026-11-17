@@ -1,0 +1,30 @@
+# Netlify settings for Centerville Web Co.
+# This is a plain static site: no build step, files are served as-is.
+
+[build]
+  publish = "."
+  command = ""
+
+# Basic security headers for every page.
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+# Let browsers cache CSS, JS and images for a day.
+[[headers]]
+  for = "/css/*"
+  [headers.values]
+    Cache-Control = "public, max-age=86400"
+
+[[headers]]
+  for = "/js/*"
+  [headers.values]
+    Cache-Control = "public, max-age=86400"
+
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=86400"
